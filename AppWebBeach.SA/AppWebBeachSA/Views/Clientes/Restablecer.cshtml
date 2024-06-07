@@ -1,0 +1,58 @@
+﻿@model AppWebBeachSA.Models.SeguridadRestablecer;
+
+
+@{
+    ViewData["Title"] = "Restablecer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/forms.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AppWebBeachSA.styles.css" asp-append-version="true" />
+</head>
+<h1>Restablecer Contraseña</h1>
+
+<div class="row">
+    <div class="col-md-4">
+
+        @if (TempData["MensajeError"] != null)
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Mensaje</strong> @TempData["MensajeError"].
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <form asp-action="Restablecer" asp-controller="Clientes">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label">Contraseña actual</label>
+                <input asp-for="Password" class="form-control input" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NuevoPassword" class="control-label">Nueva contraseña</label>
+                <input asp-for="NuevoPassword" class="form-control input" />
+                <span asp-validation-for="NuevoPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Confirmar" class="control-label">Confirmar contraseña</label>
+                <input asp-for="Confirmar" class="form-control input" />
+                <span asp-validation-for="Confirmar" class="text-danger"></span>
+            </div>
+            <<div class="form-group pt-3 d-flex justify-content-between">
+                <a asp-action="Index" asp-controller="Clientes" class="btn boton">
+                    Volver
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z" />
+                        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466" />
+                    </svg>
+                </a>
+                <input type="submit" value="Guardar" class="btn boton" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
